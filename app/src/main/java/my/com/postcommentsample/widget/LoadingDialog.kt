@@ -14,6 +14,7 @@ class LoadingDialog : DialogFragment() {
     private var loadingDialog: ProgressDialog? = null
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+
         val acMsg = arguments?.getString(getMsg)
 
         loadingDialog = ProgressDialog(activity)
@@ -27,16 +28,16 @@ class LoadingDialog : DialogFragment() {
     override fun onAttach(context: Context) { super.onAttach(context) }
 
     fun newInstance(msg: String?, cancellable: Boolean): LoadingDialog {
+
         val args = Bundle()
         args.putString(getMsg, msg)
         val loadingDialogView = LoadingDialog()
         loadingDialogView.isCancelable = cancellable
         loadingDialogView.arguments = args
         return loadingDialogView
+
     }
 
-    fun setMessage(msg: String) {
-        loadingDialog?.setMessage(msg)
-    }
+    fun setMessage(msg: String) { loadingDialog?.setMessage(msg) }
 
 }

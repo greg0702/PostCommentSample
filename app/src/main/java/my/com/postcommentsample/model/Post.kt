@@ -22,29 +22,17 @@ class Post {
 
     fun setUserId(userId: Int) { this.userId = userId }
 
-    fun getId(): Int {
-        return id
-    }
+    fun getId(): Int { return id }
 
-    fun setId(id: Int) {
-        this.id = id
-    }
+    fun setId(id: Int) { this.id = id }
 
-    fun getTitle(): String {
-        return title
-    }
+    fun getTitle(): String { return title }
 
-    fun setTitle(title: String) {
-        this.title = title
-    }
+    fun setTitle(title: String) { this.title = title }
 
-    fun getBody(): String {
-        return body
-    }
+    fun getBody(): String { return body }
 
-    fun setBody(body: String) {
-        this.body = body
-    }
+    fun setBody(body: String) { this.body = body }
 
     override fun toString(): String {
         return "Post{" +

@@ -2,6 +2,7 @@ package my.com.postcommentsample.base.mvp
 
 import io.reactivex.disposables.Disposable
 import net.grandcentrix.thirtyinch.TiView
+import retrofit2.Retrofit
 
 interface BaseMvp {
 
@@ -19,7 +20,7 @@ interface BaseMvp {
 
         fun disposableManager(disposable: Disposable)
 
-
+        fun getRetrofitInstance(): Retrofit
 
     }
 

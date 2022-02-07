@@ -1,11 +1,9 @@
 package my.com.postcommentsample.post.util
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import my.com.postcommentsample.R
 import my.com.postcommentsample.model.Post
@@ -26,7 +24,7 @@ class PostAdapter(
 
     fun setPosts(posts: List<Post>){
         this.posts = posts
-        notifyDataSetChanged()
+        this.posts.forEach { notifyItemInserted(this.posts.indexOf(it)) }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,8 +43,6 @@ class PostAdapter(
 
     }
 
-    override fun getItemCount(): Int {
-        return posts.size
-    }
+    override fun getItemCount(): Int { return posts.size }
 
 }

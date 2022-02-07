@@ -1,6 +1,5 @@
 package my.com.postcommentsample.base
 
-import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.LayoutRes
 import my.com.postcommentsample.base.mvp.BaseMvp
@@ -15,10 +14,6 @@ abstract class BaseActivity<V : BaseMvp.FirstView, P : BasePresenter<V>> : TiAct
     @LayoutRes
     protected abstract fun layout(): Int
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun showLoading(msg: String) {
         if (!isFinishing){
             hideLoading()
@@ -27,13 +22,8 @@ abstract class BaseActivity<V : BaseMvp.FirstView, P : BasePresenter<V>> : TiAct
         }
     }
 
-    override fun hideLoading() {
-        loadingDialog?.dismiss()
-    }
+    override fun hideLoading() { loadingDialog?.dismiss() }
 
-    override fun showToast(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
-    }
-
+    override fun showToast(msg: String) { Toast.makeText(this, msg, Toast.LENGTH_SHORT).show() }
 
 }

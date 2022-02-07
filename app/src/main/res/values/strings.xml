@@ -2,6 +2,10 @@
     <string name="app_name">PostCommentSample</string>
     <string name="title">Title:</string>
     <string name="body">Body:</string>
-    <string name="post">Posts</string>
+    <string name="post">Posts Listing</string>
+    <string name="comment">Comments Listing</string>
     <string name="all_posts">All Posts</string>
+    <string name="post_author">Post Author:</string>
+    <string name="id">ID:</string>
+    <string name="all_comments">All Comments</string>
 </resources>

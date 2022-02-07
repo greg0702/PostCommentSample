@@ -1,4 +1,4 @@
-package my.com.postcommentsample.post
+package my.com.postcommentsample.comment
 
 import android.util.Log
 import io.reactivex.Observable
@@ -8,41 +8,41 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import my.com.postcommentsample.base.mvp.presenter.BasePresenter
-import my.com.postcommentsample.model.Post
+import my.com.postcommentsample.model.Comment
 import my.com.postcommentsample.request.ApiCall
 
-class PostPresenter: BasePresenter<PostMvp.PostView>(), PostMvp.PostPresenter {
+class CommentPresenter: BasePresenter<CommentMvp.CommentView>(), CommentMvp.CommentPresenter {
 
-    private val TAG = "POST_PRESENTER_ERROR"
+    private val TAG = "COMMENT_PRESENTER_ERROR"
 
     private val disposables = CompositeDisposable()
 
-    private var getPostList: List<Post> = ArrayList()
+    private var getCommentList: List<Comment> = ArrayList()
 
-    override fun loadPost() {
+    override fun loadComment(postId: Int) {
 
-        val getRetrofitIns = getRetrofitInstance()
+        val retrofitIns = getRetrofitInstance()
 
-        val requestApi = getRetrofitIns.create(ApiCall:: class.java)
+        val requestApi = retrofitIns.create(ApiCall:: class.java)
 
-        requestApi.getPost()
-            .flatMap { posts ->
-                getPostList = posts
-                return@flatMap Observable.fromIterable(posts)
+        requestApi.getComments(postId)
+            .flatMap { comment ->
+                getCommentList = comment
+                return@flatMap Observable.fromIterable(comment)
             }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
                 sendToView { v ->
-                    v.showLoading("Loading Posts...")
+                    v.showLoading("Loading Comments...")
                 }
-            }.subscribe (object : Observer<Post>{
+            }.subscribe(object: Observer<Comment>{
                 override fun onSubscribe(d: Disposable) { disposables.add(d) }
 
-                override fun onNext(t: Post) {}
+                override fun onNext(t: Comment) {}
 
                 override fun onError(e: Throwable) {
-                    Log.e(TAG,"Post Presenter Error", e)
+                    Log.e(TAG,"Comment Presenter Error", e)
                     sendToView { f ->
                         f.hideLoading()
                         f.showToast("An unexpected error occurred. Please try again later.")
@@ -50,8 +50,8 @@ class PostPresenter: BasePresenter<PostMvp.PostView>(), PostMvp.PostPresenter {
                 }
 
                 override fun onComplete() {
-                    viewOrThrow.getPostLoaded(getPostList)
-                    viewOrThrow.doneLoadPost()
+                    viewOrThrow.getLoadedComment(getCommentList)
+                    viewOrThrow.doneLoadComment()
                 }
 
             })

@@ -5,9 +5,13 @@
       <map>
         <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/drawable/customborder.xml" value="0.1885" />
         <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/drawable/customborder2.xml" value="0.1885" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/drawable/ic_comment.xml" value="0.1885" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/drawable/ic_post.xml" value="0.1885" />
         <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/drawable/vertical_divider.xml" value="0.1885" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/layout/activity_comment.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/layout/activity_main.xml" value="0.2596491228070175" />
         <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/layout/activity_post.xml" value="0.25" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/layout/comment_item.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/layout/post_item.xml" value="0.2596491228070175" />
       </map>
     </option>
