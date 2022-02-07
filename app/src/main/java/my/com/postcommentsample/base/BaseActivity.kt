@@ -2,6 +2,7 @@ package my.com.postcommentsample.base
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.annotation.LayoutRes
 import my.com.postcommentsample.base.mvp.BaseMvp
 import my.com.postcommentsample.base.mvp.presenter.BasePresenter
 import my.com.postcommentsample.widget.LoadingDialog
@@ -10,6 +11,9 @@ import net.grandcentrix.thirtyinch.TiActivity
 abstract class BaseActivity<V : BaseMvp.FirstView, P : BasePresenter<V>> : TiActivity<P, V>(), BaseMvp.FirstView {
 
     private var loadingDialog: LoadingDialog? = null
+
+    @LayoutRes
+    protected abstract fun layout(): Int
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

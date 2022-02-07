@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PostCommentSample</string>
+    <string name="title">Title:</string>
+    <string name="body">Body:</string>
+    <string name="post">Posts</string>
+    <string name="all_posts">All Posts</string>
 </resources>
