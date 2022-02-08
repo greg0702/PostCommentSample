@@ -1,4 +1,4 @@
-package my.com.postcommentsample.comment.util
+package my.com.postcommentsample.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -32,9 +32,9 @@ class CommentAdapter: RecyclerView.Adapter<CommentAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.txtName.text = comments[position].getName()
-        holder.txtPostIdComment.text = "Replying to Post: " + comments[position].getPostId().toString()
-        holder.txtCommentBody.text = comments[position].getBody()
+        holder.txtName.text = comments[position].name
+        holder.txtPostIdComment.text = "Replying to Post: " + comments[position].postId.toString()
+        holder.txtCommentBody.text = comments[position].body
 
     }
 

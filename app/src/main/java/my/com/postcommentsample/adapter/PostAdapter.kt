@@ -1,4 +1,4 @@
-package my.com.postcommentsample.post.util
+package my.com.postcommentsample.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import my.com.postcommentsample.R
 import my.com.postcommentsample.model.Post
 
 class PostAdapter(
-    val fn : (ViewHolder, Post) -> Unit = { _,_ -> }
+    val fn : (ViewHolder, Post) -> Unit = { _, _ -> }
     ): RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
     private var posts: List<Post> = ArrayList()
@@ -36,8 +36,8 @@ class PostAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.txtTitle.text = posts[position].getTitle()
-        holder.txtBody.text = posts[position].getBody()
+        holder.txtTitle.text = posts[position].title
+        holder.txtBody.text = posts[position].body
 
         fn(holder,posts[position])
 

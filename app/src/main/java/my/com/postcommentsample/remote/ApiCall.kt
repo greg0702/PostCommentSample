@@ -1,4 +1,4 @@
-package my.com.postcommentsample.request
+package my.com.postcommentsample.remote
 
 import io.reactivex.Observable
 import my.com.postcommentsample.model.Comment
