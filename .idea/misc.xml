@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ITP/Tutorial Project/PostCommentSample/app/src/main/res/layout/activity_comment.xml" value="0.25" />
+        <entry key="..\:/ITP/Tutorial Project/PostCommentSample/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/drawable/customborder.xml" value="0.1885" />
         <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/drawable/customborder2.xml" value="0.1885" />
         <entry key="..\:/Users/User/AndroidStudioProjects/PostCommentSample/app/src/main/res/drawable/ic_comment.xml" value="0.1885" />

@@ -8,4 +8,10 @@
     <string name="post_author">Post Author:</string>
     <string name="id">ID:</string>
     <string name="all_comments">All Comments</string>
+    <string name="no_post_found">No Post Found!</string>
+    <string name="no_comments_found">No Comments Found!</string>
+    <string name="refresh">Refresh</string>
+    <string name="no_internet">No Internet Connectivity!</string>
+    <string name="error_occurred">Error Occurred!</string>
+    <string name="retry_button">Retry</string>
 </resources>

@@ -9,7 +9,7 @@ import my.com.postcommentsample.R
 import my.com.postcommentsample.model.Post
 
 class PostAdapter(
-    val fn : (ViewHolder, Post) -> Unit = { _, _ -> }
+    val callback : (Post) -> Unit,
     ): RecyclerView.Adapter<PostAdapter.ViewHolder>() {
 
     private var posts: List<Post> = ArrayList()
@@ -36,10 +36,11 @@ class PostAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-        holder.txtTitle.text = posts[position].title
-        holder.txtBody.text = posts[position].body
+        val currentPost = posts[position]
 
-        fn(holder,posts[position])
+        holder.txtTitle.text = currentPost.title
+        holder.txtBody.text = currentPost.body
+        holder.root.setOnClickListener { callback(currentPost) }
 
     }
 

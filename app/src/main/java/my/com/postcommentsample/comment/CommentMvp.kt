@@ -11,6 +11,8 @@ interface CommentMvp {
 
         fun doneLoadComment()
 
+        fun noComment(status: String)
+
     }
 
     interface CommentPresenter: BaseMvp.FirstPresenter{

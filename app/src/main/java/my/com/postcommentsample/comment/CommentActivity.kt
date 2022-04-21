@@ -1,12 +1,14 @@
 package my.com.postcommentsample.comment
 
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import my.com.postcommentsample.R
 import my.com.postcommentsample.adapter.CommentAdapter
 import my.com.postcommentsample.base.BaseActivity
 import my.com.postcommentsample.databinding.ActivityCommentBinding
 import my.com.postcommentsample.model.Comment
+import my.com.postcommentsample.remote.helper.NetworkChecker
 
 class CommentActivity : BaseActivity<CommentMvp.CommentView, CommentPresenter>(), CommentMvp.CommentView {
 
@@ -33,9 +35,38 @@ class CommentActivity : BaseActivity<CommentMvp.CommentView, CommentPresenter>()
         postTitle = intent.getStringExtra("title") ?: ""
         postBody = intent.getStringExtra("body") ?: ""
 
+        loadPost()
+
         setAdapter()
 
-        callLoadComment()
+        val haveInternet = NetworkChecker.haveInternet(this)
+
+        if (haveInternet){
+            callLoadComment()
+        }else{
+            binding.rvComment.isVisible = false
+            binding.txtNoComment.isVisible = true
+            binding.btnRefreshComment.isVisible = true
+
+            binding.txtNoComment.text = getString(R.string.no_internet)
+            binding.btnRefreshComment.text = getString(R.string.refresh)
+
+            binding.btnRefreshComment.setOnClickListener {
+
+                showLoading("Refreshing...")
+                val isConnected = NetworkChecker.haveInternet(this)
+
+                if (isConnected){
+                    callLoadComment()
+                    binding.rvComment.isVisible = true
+                    binding.txtNoComment.isVisible = false
+                    binding.btnRefreshComment.isVisible = false
+                }else{
+                    hideLoading()
+                }
+
+            }
+        }
 
     }
 
@@ -74,14 +105,32 @@ class CommentActivity : BaseActivity<CommentMvp.CommentView, CommentPresenter>()
 
     override fun providePresenter(): CommentPresenter { return CommentPresenter() }
 
-    override fun getLoadedComment(list: List<Comment>) {
-
-        loadPost()
-
-        adapter.setComment(list)
-
-    }
+    override fun getLoadedComment(list: List<Comment>) { adapter.setComment(list) }
 
     override fun doneLoadComment() { hideLoading() }
+
+    override fun noComment(status: String) {
+
+        binding.rvComment.isVisible = false
+        binding.txtNoComment.isVisible = true
+        binding.btnRefreshComment.isVisible = true
+
+        if (status == presenter.API_ERROR){
+            binding.txtNoComment.text = getString(R.string.error_occurred)
+            binding.btnRefreshComment.text = getString(R.string.retry_button)
+        }else{
+            binding.txtNoComment.text = getString(R.string.no_comments_found)
+            binding.btnRefreshComment.text = getString(R.string.refresh)
+        }
+
+        binding.btnRefreshComment.setOnClickListener {
+            callLoadComment()
+
+            binding.rvComment.isVisible = true
+            binding.txtNoComment.isVisible = false
+            binding.btnRefreshComment.isVisible = false
+        }
+
+    }
 
 }

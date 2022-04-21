@@ -11,6 +11,8 @@ interface PostMvp {
 
         fun doneLoadPost()
 
+        fun noPost(status: String)
+
     }
 
     interface PostPresenter: BaseMvp.FirstPresenter{

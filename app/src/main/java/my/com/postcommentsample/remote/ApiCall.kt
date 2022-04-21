@@ -9,9 +9,9 @@ import retrofit2.http.Path
 interface ApiCall {
 
     @GET("posts")
-    fun getPost(): Observable<List<Post>>
+    suspend fun getPost(): List<Post>
 
     @GET("posts/{id}/comments")
-    fun getComments(@Path("id") id: Int): Observable<List<Comment>>
+    suspend fun getComments(@Path("id") id: Int): List<Comment>
 
 }
